@@ -11,6 +11,7 @@ runtask = "2.1.0"
 
 miniplaceholders = "2.2.1"
 adventure = "4.14.0"
+insights = "6.11.0"
 
 [libraries]
 
@@ -20,6 +21,8 @@ miniplaceholders = { group = "io.github.miniplaceholders", name = "miniplacehold
 
 adventure-api = { group = "net.kyori", name = "adventure-api", version.ref = "adventure" }
 adventure-minimessage = { group = "net.kyori", name = "adventure-text-minimessage", version.ref = "adventure" }
+
+insights = { module = "dev.frankheijden.insights:Insights", version.ref = "insights" }
 
 [plugins]
 

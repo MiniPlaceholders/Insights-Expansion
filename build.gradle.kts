@@ -4,15 +4,14 @@ plugins {
 }
 
 dependencies {
-    implementation(projects.exampleExpansionVelocity)
-    implementation(projects.exampleExpansionPaper)
-    implementation(projects.exampleExpansionSponge)
+    implementation(projects.insightsExpansionPaper)
 }
 
 subprojects {
     apply<JavaPlugin>()
     repositories {
         maven("https://papermc.io/repo/repository/maven-public/")
+        maven("https://repo.fvdh.dev/releases")
     }
     java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
     tasks {
