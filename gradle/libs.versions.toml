@@ -11,7 +11,7 @@ runtask = "2.1.0"
 
 miniplaceholders = "2.2.2"
 adventure = "4.14.0"
-insights = "6.15.0"
+insights = "6.19.2"
 
 [libraries]
 
