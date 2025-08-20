@@ -3,8 +3,7 @@ package io.github.miniplaceholders.expansion.insights;
 import dev.frankheijden.insights.api.InsightsPlugin;
 import dev.frankheijden.insights.api.config.LimitEnvironment;
 import dev.frankheijden.insights.api.objects.wrappers.ScanObject;
-import io.github.miniplaceholders.api.placeholder.AudiencePlaceholder;
-import net.kyori.adventure.audience.Audience;
+import io.github.miniplaceholders.api.resolver.AudienceTagResolver;
 import net.kyori.adventure.text.minimessage.Context;
 import net.kyori.adventure.text.minimessage.tag.Tag;
 import net.kyori.adventure.text.minimessage.tag.resolver.ArgumentQueue;
@@ -14,17 +13,11 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public final class LimitMaxPlaceholder implements AudiencePlaceholder {
-
-    private final InsightsPlugin plugin;
-
-    public LimitMaxPlaceholder(final InsightsPlugin plugin) {
-        this.plugin = plugin;
-    }
+public record LimitMaxPlaceholder(InsightsPlugin plugin) implements AudienceTagResolver<@NotNull Player> {
 
     @Override
     public @Nullable Tag tag(
-            final @NotNull Audience audience,
+            final @NotNull Player player,
             final @NotNull ArgumentQueue queue,
             final @NotNull Context ctx
     ) {
@@ -36,8 +29,6 @@ public final class LimitMaxPlaceholder implements AudiencePlaceholder {
         } catch (IllegalArgumentException ex) {
             throw ctx.newException("Invalid Material/Entity");
         }
-
-        final Player player = (Player) audience;
 
         final Location location = player.getLocation();
         final World world = location.getWorld();

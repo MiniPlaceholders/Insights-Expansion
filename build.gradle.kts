@@ -1,33 +1,30 @@
 plugins {
     java
-    alias(libs.plugins.shadow)
 }
 
 dependencies {
-    implementation(projects.insightsExpansionPaper)
+    compileOnly(libs.paper.api)
+    compileOnly(libs.miniplaceholders)
+    compileOnly("maven.modrinth:Insights:6.19.2")
 }
 
-subprojects {
-    apply<JavaPlugin>()
-    repositories {
-        maven("https://papermc.io/repo/repository/maven-public/")
-        maven("https://repo.fvdh.dev/releases")
-    }
-    java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
-    tasks {
-        compileJava {
-            options.encoding = Charsets.UTF_8.name()
-            options.release.set(17)
-        }
-    }
+repositories {
+    maven("https://repo.papermc.io/repository/maven-public/")
+    maven("https://central.sonatype.com/repository/maven-snapshots/")
+    //maven("https://repo.fvdh.dev/releases")
+    maven("https://api.modrinth.com/maven")
 }
+
+java.toolchain.languageVersion.set(JavaLanguageVersion.of(21))
 
 tasks {
-    shadowJar {
-        archiveFileName.set("${rootProject.name}-${project.version}.jar")
-        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    compileJava {
+        options.encoding = Charsets.UTF_8.name()
+        options.release.set(21)
     }
-    build {
-        dependsOn(shadowJar)
+    processResources {
+        filesMatching("paper-plugin.yml") {
+            expand("version" to project.version)
+        }
     }
 }
