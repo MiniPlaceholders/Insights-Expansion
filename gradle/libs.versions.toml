@@ -7,7 +7,7 @@ paper = "1.21.8-R0.1-SNAPSHOT"
 runtask = "3.0.0"
 
 miniplaceholders = "3.0.1"
-adventure = "4.24.0"
+adventure = "4.25.0"
 insights = "6.15.0"
 
 [libraries]
