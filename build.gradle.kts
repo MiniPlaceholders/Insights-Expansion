@@ -5,7 +5,7 @@ plugins {
 dependencies {
     compileOnly(libs.paper.api)
     compileOnly(libs.miniplaceholders)
-    compileOnly("maven.modrinth:Insights:6.19.2")
+    compileOnly("maven.modrinth:Insights:6.23.0")
 }
 
 repositories {
